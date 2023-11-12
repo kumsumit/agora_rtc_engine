@@ -307,8 +307,7 @@ class InitializationState extends ChangeNotifier {
 
 class RtcEngineImpl extends rtc_engine_ex_binding.RtcEngineExImpl
     implements RtcEngineEx {
-  RtcEngineImpl._(IrisMethodChannel irisMethodChannel)
-      : super(irisMethodChannel);
+  RtcEngineImpl._(super.irisMethodChannel);
 
   static RtcEngineImpl? _instance;
 

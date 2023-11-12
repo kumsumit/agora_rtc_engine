@@ -3237,7 +3237,7 @@ class Packet {
   const Packet({this.buffer, this.size});
 
   /// @nodoc
-  @JsonKey(name: 'buffer', ignore: true)
+  @JsonKey(name: 'buffer', includeFromJson: true, includeToJson: false)
   final Uint8List? buffer;
 
   /// @nodoc
@@ -6025,7 +6025,7 @@ class EncryptionConfig {
   final String? encryptionKey;
 
   /// Salt, 32 bytes in length. Agora recommends that you use OpenSSL to generate salt on the server side. See Media Stream Encryption for details. This parameter takes effect only in aes128Gcm2 or aes256Gcm2 encrypted mode. In this case, ensure that this parameter is not 0.
-  @JsonKey(name: 'encryptionKdfSalt', ignore: true)
+  @JsonKey(name: 'encryptionKdfSalt', includeFromJson: true, includeToJson: false)
   final Uint8List? encryptionKdfSalt;
 
   /// @nodoc

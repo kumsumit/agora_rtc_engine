@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:ffi' as ffi;
 
-import 'package:agora_rtc_engine/src/agora_rtc_engine.dart';
 import 'package:agora_rtc_engine/src/impl/platform/global_video_view_controller_platform.dart';
 import 'package:agora_rtc_engine/src/impl/platform/io/native_iris_api_engine_binding_delegate.dart';
 import 'package:agora_rtc_engine/src/impl/video_view_controller_impl.dart';
@@ -15,8 +14,7 @@ const kNullViewHandle = 0;
 
 class GlobalVideoViewControllerIO extends GlobalVideoViewControllerPlatfrom {
   GlobalVideoViewControllerIO(
-      IrisMethodChannel irisMethodChannel, RtcEngine rtcEngine)
-      : super(irisMethodChannel, rtcEngine);
+      super.irisMethodChannel, super.rtcEngine);
 
   final MethodChannel methodChannel =
       const MethodChannel('agora_rtc_ng/video_view_controller');

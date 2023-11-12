@@ -53,8 +53,7 @@ class MusicCollectionImpl extends MusicCollection {
 class MusicContentCenterEventHandlerWrapper
     extends event_binding.MusicContentCenterEventHandlerWrapper {
   MusicContentCenterEventHandlerWrapper(
-      MusicContentCenterEventHandler musicContentCenterEventHandler)
-      : super(musicContentCenterEventHandler);
+      super.musicContentCenterEventHandler);
 
   @override
   bool handleEventInternal(
@@ -90,8 +89,8 @@ class MusicContentCenterEventHandlerWrapper
 
 class MusicPlayerImpl extends media_player_impl.MediaPlayerImpl
     implements MusicPlayer {
-  MusicPlayerImpl.create(int mediaPlayerId, IrisMethodChannel irisMethodChannel)
-      : super.create(mediaPlayerId, irisMethodChannel);
+  MusicPlayerImpl.create(super.mediaPlayerId, super.irisMethodChannel)
+      : super.create();
 
   @override
   Future<void> openWithSongCode(

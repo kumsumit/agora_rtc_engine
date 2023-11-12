@@ -21,7 +21,7 @@ import 'package:iris_method_channel/iris_method_channel.dart';
 import 'package:meta/meta.dart';
 
 class _MediaPlayerScopedKey extends TypedScopedKey {
-  const _MediaPlayerScopedKey(Type type, this.mediaPlayerId) : super(type);
+  const _MediaPlayerScopedKey(super.type, this.mediaPlayerId);
   final int mediaPlayerId;
 
   @override
@@ -327,8 +327,7 @@ class MediaPlayerImpl extends agora_media_player_impl_binding.MediaPlayerImpl
 
 class MediaPlayerCacheManagerImpl extends agora_media_player_impl_binding
     .MediaPlayerCacheManagerImpl with ScopedDisposableObjectMixin {
-  MediaPlayerCacheManagerImpl._(IrisMethodChannel irisMethodChannel)
-      : super(irisMethodChannel);
+  MediaPlayerCacheManagerImpl._(super.irisMethodChannel);
 
   factory MediaPlayerCacheManagerImpl.create(RtcEngine rtcEngine) {
     return rtcEngine.objectPool.putIfAbsent(

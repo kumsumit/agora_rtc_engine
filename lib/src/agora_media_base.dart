@@ -704,7 +704,7 @@ class ExternalVideoFrame {
   final VideoPixelFormat? format;
 
   /// Video frame buffer.
-  @JsonKey(name: 'buffer', ignore: true)
+  @JsonKey(name: 'buffer', includeFromJson: true, includeToJson: false)
   final Uint8List? buffer;
 
   /// Line spacing of the incoming video frame, which must be in pixels instead of bytes. For textures, it is the width of the texture.
@@ -752,7 +752,7 @@ class ExternalVideoFrame {
   final List<double>? matrix;
 
   /// This parameter only applies to video data in Texture format. The MetaData buffer. The default value is NULL.
-  @JsonKey(name: 'metadata_buffer', ignore: true)
+  @JsonKey(name: 'metadata_buffer', includeFromJson: true, includeToJson: false)
   final Uint8List? metadataBuffer;
 
   /// This parameter only applies to video data in Texture format. The MetaData size. The default value is 0.
@@ -760,7 +760,7 @@ class ExternalVideoFrame {
   final int? metadataSize;
 
   /// @nodoc
-  @JsonKey(name: 'alphaBuffer', ignore: true)
+  @JsonKey(name: 'alphaBuffer', includeFromJson: true, includeToJson: false)
   final Uint8List? alphaBuffer;
 
   /// This parameter only applies to video data in Windows Texture format. It represents an index of an ID3D11Texture2D texture object used by the video frame in the ID3D11Texture2D array.
@@ -880,15 +880,15 @@ class VideoFrame {
   final int? vStride;
 
   /// For YUV data, the pointer to the Y buffer; for RGBA data, the data buffer.
-  @JsonKey(name: 'yBuffer', ignore: true)
+  @JsonKey(name: 'yBuffer', includeFromJson: true, includeToJson: false)
   final Uint8List? yBuffer;
 
   /// For YUV data, the pointer to the U buffer; for RGBA data, the value is 0.
-  @JsonKey(name: 'uBuffer', ignore: true)
+  @JsonKey(name: 'uBuffer', includeFromJson: true, includeToJson: false)
   final Uint8List? uBuffer;
 
   /// For YUV data, the pointer to the V buffer; for RGBA data, the value is 0.
-  @JsonKey(name: 'vBuffer', ignore: true)
+  @JsonKey(name: 'vBuffer', includeFromJson: true, includeToJson: false)
   final Uint8List? vBuffer;
 
   /// The clockwise rotation of the video frame before rendering. Supported values include 0, 90, 180, and 270 degrees.
@@ -904,7 +904,7 @@ class VideoFrame {
   final int? avsyncType;
 
   /// This parameter only applies to video data in Texture format. The MetaData buffer. The default value is NULL.
-  @JsonKey(name: 'metadata_buffer', ignore: true)
+  @JsonKey(name: 'metadata_buffer', includeFromJson: true, includeToJson: false)
   final Uint8List? metadataBuffer;
 
   /// This parameter only applies to video data in Texture format. The MetaData size. The default value is 0.
@@ -920,11 +920,11 @@ class VideoFrame {
   final List<double>? matrix;
 
   /// @nodoc
-  @JsonKey(name: 'alphaBuffer', ignore: true)
+  @JsonKey(name: 'alphaBuffer', includeFromJson: true, includeToJson: false)
   final Uint8List? alphaBuffer;
 
   /// @nodoc
-  @JsonKey(name: 'pixelBuffer', ignore: true)
+  @JsonKey(name: 'pixelBuffer', includeFromJson: true, includeToJson: false)
   final Uint8List? pixelBuffer;
 
   /// @nodoc
@@ -1118,7 +1118,7 @@ class AudioFrame {
   final int? samplesPerSec;
 
   /// The data buffer of the audio frame. When the audio frame uses a stereo channel, the data buffer is interleaved. The size of the data buffer is as follows: buffer = samples × channels × bytesPerSample.
-  @JsonKey(name: 'buffer', ignore: true)
+  @JsonKey(name: 'buffer', includeFromJson: true, includeToJson: false)
   final Uint8List? buffer;
 
   /// The timestamp (ms) of the external audio frame. You can use this timestamp to restore the order of the captured audio frame, and synchronize audio and video frames in video scenarios, including scenarios where external video sources are used.
@@ -1228,24 +1228,18 @@ class AudioFrameObserver extends AudioFrameObserverBase {
   /// @nodoc
   const AudioFrameObserver({
     /// @nodoc
-    void Function(String channelId, AudioFrame audioFrame)? onRecordAudioFrame,
+    super.onRecordAudioFrame,
 
     /// @nodoc
-    void Function(String channelId, AudioFrame audioFrame)?
-        onPlaybackAudioFrame,
+    super.onPlaybackAudioFrame,
 
     /// @nodoc
-    void Function(String channelId, AudioFrame audioFrame)? onMixedAudioFrame,
+    super.onMixedAudioFrame,
 
     /// @nodoc
-    void Function(AudioFrame audioFrame)? onEarMonitoringAudioFrame,
+    super.onEarMonitoringAudioFrame,
     this.onPlaybackAudioFrameBeforeMixing,
-  }) : super(
-          onRecordAudioFrame: onRecordAudioFrame,
-          onPlaybackAudioFrame: onPlaybackAudioFrame,
-          onMixedAudioFrame: onMixedAudioFrame,
-          onEarMonitoringAudioFrame: onEarMonitoringAudioFrame,
-        );
+  });
 
   /// Retrieves the audio frame of a specified user before mixing.
   ///

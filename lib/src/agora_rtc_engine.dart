@@ -710,7 +710,7 @@ class VideoCompositingLayout {
   final int? regionCount;
 
   /// @nodoc
-  @JsonKey(name: 'appData', ignore: true)
+  @JsonKey(name: 'appData', includeFromJson: true, includeToJson: false)
   final Uint8List? appData;
 
   /// @nodoc
@@ -1100,7 +1100,7 @@ class ThumbImageBuffer {
   const ThumbImageBuffer({this.buffer, this.length, this.width, this.height});
 
   /// The buffer of the thumbnail or icon.
-  @JsonKey(name: 'buffer', ignore: true)
+  @JsonKey(name: 'buffer', includeFromJson: true, includeToJson: false)
   final Uint8List? buffer;
 
   /// The buffer length of the thumbnail or icon, in bytes.
@@ -2778,7 +2778,7 @@ class Metadata {
   final int? size;
 
   /// The buffer address of the sent or received Metadata.
-  @JsonKey(name: 'buffer', ignore: true)
+  @JsonKey(name: 'buffer', includeFromJson: true, includeToJson: false)
   final Uint8List? buffer;
 
   /// The timestamp (ms) of Metadata.
